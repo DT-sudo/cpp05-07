@@ -1,29 +1,31 @@
 #include "Serializer.hpp"
+#include <iostream>
 
 int main(void)
 {
-    Data* ptrToStruct1;
-    Data* ptrToStruct2;
-    Data newStruct;
-    uintptr_t adressInInt;
+    Data data;
+    uintptr_t raw;
+    Data* ptrBefore;
+    Data* ptrAfter;
 
-    ptrToStruct1 = &newStruct;
-    newStruct.name = "structName";
-    newStruct.num = 42;
+    data.num = 42;
+    data.name = "structName";
 
-    std::string* adressOfName = &newStruct.name;
-    int* adressOfNum = &newStruct.num;
+    ptrBefore = &data;
+    raw = Serializer::serialize(ptrBefore);
+    ptrAfter = Serializer::deserialize(raw);
 
-    adressInInt = Serializer::serialize(&newStruct);
-    ptrToStruct2 = Serializer::deserialize(adressInInt);
+    std::cout << "original pointer:     " << ptrBefore << std::endl;
+    std::cout << "serialized value:     " << raw << std::endl;
+    std::cout << "deserialized pointer: " << ptrAfter << '\n' << std::endl;
 
-    std::cout << newStruct.name << std::endl;
-    std::cout << newStruct.num << '\n' << std::endl;
+    if (ptrBefore == ptrAfter)
+        std::cout << "OK: deserialized pointer compares equal to the original" << std::endl;
+    else
+        std::cout << "KO: pointers differ!" << std::endl;
 
-    std::cout << &newStruct.name << " == " << adressOfName << std::endl;
-    std::cout << &newStruct.num <<  " == " << adressOfNum  << '\n' << std::endl;
-    
-    std::cout << ptrToStruct1 <<  " == " << ptrToStruct2 << std::endl;
-    
+    std::cout << "num:  " << ptrAfter->num << std::endl;
+    std::cout << "name: " << ptrAfter->name << std::endl;
+
     return 0;
 }

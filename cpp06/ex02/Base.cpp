@@ -43,30 +43,26 @@ void identify(Base& p)
         std::cout << "A" << std::endl;
         return;
     }
-    catch (std::bad_cast& e)
+    catch (...)
     {
-        std::cerr << "Error: " << e.what() << " - passed object is not a type of A class"<< std::endl;
     }
-    try 
+    try
     {
         (void)dynamic_cast<B&>(p);
         std::cout << "B" << std::endl;
         return;
     }
-    catch(std::bad_cast& e)
+    catch (...)
     {
-        std::cerr << "Error: " << e.what() << " - passed object is not a type of B class"<< std::endl;
     }
-    try 
+    try
     {
         (void)dynamic_cast<C&>(p);
         std::cout << "C" << std::endl;
         return;
     }
-    catch (std::bad_cast& e)
+    catch (...)
     {
-        std::cerr << "Error: " << e.what() << " - passed object is not a type of C class"<< std::endl;
-
     }
 }
 

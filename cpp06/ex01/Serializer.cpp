@@ -1,12 +1,15 @@
 #include "Serializer.hpp"
+#include <cstddef>
+#include <iostream>
 
 Serializer::Serializer()
 {
-    std::cout << "Serializer constructor called" << std::endl;
+    std::cout << "Serializer default constructor called" << std::endl;
 }
 
 Serializer::Serializer(const Serializer& other)
 {
+    std::cout << "Serializer copy constructor called" << std::endl;
     *this = other;
 }
 
@@ -18,7 +21,7 @@ Serializer& Serializer::operator=(const Serializer& other)
 
 Serializer::~Serializer()
 {
-    std::cout << "Serializer called" << std::endl;
+    std::cout << "Serializer destructor called" << std::endl;
 }
 
 uintptr_t Serializer::serialize( Data* ptr )

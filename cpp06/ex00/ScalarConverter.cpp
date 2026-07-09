@@ -16,11 +16,12 @@ static bool checkOverflow(std::string literal, double& d);
 
 ScalarConverter::ScalarConverter()
 {
-
+    std::cout << "ScalarConverter default constructor called" << std::endl;
 }
 
 ScalarConverter::ScalarConverter(const ScalarConverter& other)
 {
+    std::cout << "ScalarConverter copy constructor called" << std::endl;
     *this = other;
 }
 
@@ -32,7 +33,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 
 ScalarConverter::~ScalarConverter()
 {
-
+    std::cout << "ScalarConverter destructor called" << std::endl;
 }
 
 static bool isPseudo(std::string literal)
@@ -106,6 +107,7 @@ void ScalarConverter::convert(std::string literal)
                 f = 1;
                 continue;
             }
+            std::cout << "Invalid input literal" << std::endl;
             return;
         }
         if ( f && dot )
@@ -134,6 +136,7 @@ void ScalarConverter::convert(std::string literal)
                 f = 1;
                 continue;
             }
+            std::cout << "Invalid input literal" << std::endl;
             return;
         }
         if ( f && dot )
@@ -144,7 +147,7 @@ void ScalarConverter::convert(std::string literal)
             isInt(literal);
         return;
     }
-    
+
     std::cout << "Invalid input literal" << std::endl;
 
     return;
