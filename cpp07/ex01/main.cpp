@@ -20,6 +20,12 @@ void printS(std::string& i)
     std::cout << i << std::endl;
 }
 
+template <typename T>
+void printT(T const& x)
+{
+    std::cout << x << std::endl;
+}
+
 int main(void)
 {
     int listInts1[5] = {1,2,3,4,5};
@@ -34,6 +40,10 @@ int main(void)
     ::iter(listChars1, 5, printC);
     std::cout << "\n";
     ::iter(liststrings, 5, printS);
+    std::cout << "\n";
+    ::iter(listInts1, 5, printT<int>);
+    std::cout << "\n";
+    ::iter(listInts2, 5, printT<int>);
 
     return 0;
 }

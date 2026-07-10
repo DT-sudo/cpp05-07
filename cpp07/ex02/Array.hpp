@@ -9,29 +9,29 @@ class Array
 {
     private:
     T* _list;
-    unsigned int length;
+    unsigned int _length;
 
     public:
     unsigned int size() const
     {
-        return length;
+        return _length;
     };
 
-    Array() : _list(NULL), length(0)
+    Array() : _list(NULL), _length(0)
     {
     };
 
     Array(const unsigned int n)
     {
         _list = new T[n]();
-        length = n;
+        _length = n;
     }
 
     Array(const Array& other)
     {
-        this->_list = new T[other.length]();
-        this->length = other.length;
-        for (unsigned int i = 0; i < length ; i++)
+        this->_list = new T[other._length]();
+        this->_length = other._length;
+        for (unsigned int i = 0; i < _length ; i++)
         {
             this->_list[i]=other._list[i];
         }
@@ -42,9 +42,9 @@ class Array
         if (&other != this)
         {
             delete[] this->_list;
-            this->_list = new T[other.length]();
-            this->length = other.length;
-            for (unsigned int i = 0; i < length; i++)
+            this->_list = new T[other._length]();
+            this->_length = other._length;
+            for (unsigned int i = 0; i < _length; i++)
             {
                 this->_list[i] = other._list[i];
             }
@@ -54,12 +54,18 @@ class Array
 
     T& operator[](unsigned int i)
     {
-        if (i > length-1 && length >= 1)
+        if (i >= _length)
             throw std::exception();
-        else 
-            return _list[i];
+        return _list[i];
     };
-    
+
+    const T& operator[](unsigned int i) const
+    {
+        if (i >= _length)
+            throw std::exception();
+        return _list[i];
+    };
+
     ~Array()
     {
         delete[] _list;

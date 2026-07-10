@@ -4,16 +4,16 @@
 #include <iostream>
 
 template < typename V, typename F >
-void iter(V* adress, int const lenght, F f)
+void iter(V* address, int const length, F f)
 {
-    if (lenght == 0)
+    if (length == 0)
     {
-        std::cout << "The past array is empty!" << std::endl;
+        std::cout << "Array is empty!" << std::endl;
         return ;
     }
-    for (int i = 0 ; i < lenght; i++)
+    for (int i = 0 ; i < length; i++)
     {
-        f( adress[i] );
+        f( address[i] );
     }
 }
 

@@ -6,8 +6,7 @@
 template <typename V>
 void swap( V& v1, V& v2 )
 {
-    V v3;
-    v3 = v1;
+    V v3 = v1;
     v1 = v2;
     v2 = v3;
 }

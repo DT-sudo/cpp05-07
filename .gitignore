@@ -1,0 +1,10 @@
+.DS_Store
+*.subject.pdf
+.claude/
+*.o
+convert
+serializer
+identify
+whatever
+iter
+array
